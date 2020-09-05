@@ -3,11 +3,6 @@
     </div>
 </template>
 <script>
-export default {
-    name: 'Git',
-    data () {
-        return {}
-    }
     /*
 1.git clone 地址
 2.隐藏的.git是本地仓库 存储所有版本信息
@@ -75,5 +70,10 @@ export default {
 44..gitignore：排除不想被管理的文件
     
 */
+export default {
+    name: 'Git',
+    data () {
+        return {}
+    }
 }
 </script>
