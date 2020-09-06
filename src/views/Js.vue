@@ -21,19 +21,19 @@ export default {
  *  some()只有一项符合就返回true
  *  reduce(function (initialval, next), initval)
  * 3.深拷贝
-    *  function deepclone(obj) {
-    *  var target = {}
-    *  for (var key in obj) {
-    *  if (object.prototypr.hasownproperty.call(obj, key)) {
-        *  if (typeof obj[key] == 'object') {
-        *       target[key] = deepclone(obj[key])
-        *  } else {
-        *      target[key] = obj[key];
-        *  }
-    *  }
-    *  }
-    * return target;
-    * }
+      function deepclone(obj) {
+      var target = {}
+      for (var key in obj) {
+      if (object.prototypr.hasownproperty.call(obj, key)) {
+          if (typeof obj[key] == 'object') {
+               target[key] = deepclone(obj[key])
+          } else {
+              target[key] = obj[key];
+          }
+      }
+      }
+     return target;
+     }
  *      json:
  *          let tmp = JSON.stringfy(obj);
  *          let result = JSON.parse(tmp)
