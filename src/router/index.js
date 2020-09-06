@@ -11,6 +11,12 @@ Vue.use(VueRouter)
     component: Home
   },
   {
+    path: '/css',
+    name: 'Css',
+    component: () => import(/* webpackChunkName: "css" */ '../views/Css.vue')
+    
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
