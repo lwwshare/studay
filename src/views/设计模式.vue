@@ -72,7 +72,7 @@ function adapter(res) {
 }
 5.代理模式：为一个对象提供一个代用品或者占位符，以便控制对他的访问
 
-6.策略模式： 把一系列方法封装起来，是他们方便替换
+6.策略模式： 把一系列方法封装起来，使他们方便替换
 let strategies = {
     'a': function (data) {return data*4},
     'b': function (data) {return data*3}
