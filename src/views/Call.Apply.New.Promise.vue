@@ -275,15 +275,66 @@ function myPromise() {
         }
     }
 
-6.async
-function myAsync(){
-
+6.async -> es7
+function *Generator () {
+    yield '1';
+    yield '2';
+    return '3';
 }
+let aaa = Generator();
+let a = aaa.next();//{value: '1', done: false};
+
+async函数返回一个promise对象
+面对复杂的异步流程，promise提供的all和race会更加好用
+promise本身是一个对象，所以可以在代码中任意传递
+async支持率还比较低 即使有babel 编译后也还要增加1000行左右代码
+
 
 7.节流防抖
-
+防抖：事件被触发n秒后再执行回调 如果n秒内被触发，则重新计时
+function debounce(fn, delay) {
+    let timeout;
+    return function (args) {
+        let context = this;
+        let _args = args;
+        clearTimeout(timeout);
+        timeout = setTimeout(function(){
+            fn.appy(context, _args);
+        },delay);
+    }
 }
-8.
+
+节流：在单位时间内只触发一次函数，如果多次触发 只有一次生效
+function throttle(fn, delay) {
+    let previous = 0,
+        context,
+        args;
+
+    return function () {
+        let now = new Date();
+        context = this;
+        args = arguments;
+        if (now-previous>delay) {
+            fn.apply(context, args);
+            previous = now;
+        }
+    }
+}
+2:
+function throttle(fn, delay) {
+    let timeout,
+    return function () {
+        let context = this,
+        args = arguments;
+        if (!timeout) {
+            time = setTimeout(function() {
+                timeout = null;
+                fn.apply(context, args);
+            }, delay);
+        }
+    }
+}
+
  */
 }
 </script>
