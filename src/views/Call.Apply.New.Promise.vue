@@ -300,6 +300,7 @@ function debounce(fn, delay) {
         clearTimeout(timeout);
         timeout = setTimeout(function(){
             fn.appy(context, _args);
+            //clearTimeout(timeout);            
         },delay);
     }
 }
