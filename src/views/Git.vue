@@ -38,7 +38,7 @@
 32.commit --amend[修正的意思] 
 33.如果（最新的提交）内容有错误：修改一下-> git add . ->git commit --amend
 34.rebase --interactive(交互式rebase)
-    .git rebase -i HEAD^^(便宜符号^：表示把commit往回偏移几次，~：HEAD~5:表示head指向的commit往前5个commit)
+    .git rebase -i HEAD^^(偏移符号^：表示把commit往回偏移几次，~：HEAD~5:表示head指向的commit往前5个commit)
     .pick改成edit之后 git add . ->git commit --amend
     .最后git rebase --continue
 35.git reset --hard HEAD^ /丢弃最新的提交，你被撤销的那条提交并没有消失，只是你不再用到它了
