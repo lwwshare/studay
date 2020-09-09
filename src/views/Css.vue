@@ -144,6 +144,13 @@ export default {
             }
             }
 
+
+@media screen and (min-width:240px) {
+    html, body, button, input, select, textarea {
+        font-size:9px;
+    }
+}
+
  *  */  
 }
 </script>
