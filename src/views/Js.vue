@@ -21,10 +21,10 @@ export default {
  *  some()只有一项符合就返回true
  *  reduce(function (initialval, next), initval)
  * 3.深拷贝
-      function deepclone(obj) {
-      var target = {}
-      for (var key in obj) {
-      if (object.prototypr.hasownproperty.call(obj, key)) {
+    *  function deepclone(obj) {
+    *  var target = {}
+    *  for (var key in obj) {
+    *  if (object.prototypr.hasownproperty.call(obj, key)) {
           if (typeof obj[key] == 'object') {
                target[key] = deepclone(obj[key])
           } else {
@@ -138,37 +138,7 @@ export default {
  *      classList属性：add remove toggle
  *      focus()
  *      document.readyState = loading/complete 文档是否已经加载完毕
- * 
- * 10.模块：
- * 
- * node
- * commonjs规范：requirejs:同步 不适合前端
-     暴露模块 module.exports/exports
-     加载模块 require() 
-
- * AMD规范 异步  依赖前置
- *      define(['lib'], funtion () {
- *          var add = function (x, y) {
- *              return x+y;
- *          };
- *          return {
- *              add: add
- *           }
- *      })
- *      require([module], callback);
  *      
- * CMD规范 异步
- *   CMD是seajs推崇的规范，CMD是依赖就近，用的时候再require；
-     define(function (require, exports, module) {
-          var clock = require('clock');
-          clock.start();
-     })
- * 
- *   ES6:
- *      export, import
- * 
- * 
- * 
  */
 }
 
