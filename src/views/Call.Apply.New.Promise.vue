@@ -289,6 +289,21 @@ async函数返回一个promise对象
 promise本身是一个对象，所以可以在代码中任意传递
 async支持率还比较低 即使有babel 编译后也还要增加1000行左右代码
 
+co执行器：
+function run(gen) {
+    const iterator = gen();
+    function autoRun(iterator) {
+        if (iterator.done) {
+            return iterator.value;
+        }
+        const anotherPromise = iterator.value;
+        anotherPromise.then(x => {
+            return autoRun(iterator.next(x));
+        })
+    }
+    return autoRun(iterator.next());
+}
+
 
 7.节流防抖
 防抖：事件被触发n秒后再执行回调 如果n秒内被触发，则重新计时
