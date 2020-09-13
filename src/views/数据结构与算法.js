@@ -1,3 +1,5 @@
+const { construct } = require("core-js/fn/reflect");
+
 //3.插入排序
 function insertSort(arr) {
     for (let i = 1; i < arr.length; i++) {
@@ -95,5 +97,151 @@ function binaryFind (arr, key, low, high) {
     } else if (arr[mid] < key) {
         low = mid+1;
         binaryFind(arr, key, low, high);
+    }
+ }
+ //1.栈：先进后出
+ class Stack {
+     constructor() {
+         this.items = [];
+     }
+     push(item) {
+         this.items.push();
+     };
+     pop() {
+         this.items.pop();
+     };
+     get peek() {
+        return this.items[this.items.length - 1]; 
+     };
+     get isEmpty () {
+         return !this.items.length;
+     };
+     get size () {
+         return this.items.length;
+     }
+     clear () {
+         this.items = [];
+     }
+ }
+ const stack = new Stack();
+
+ //2队列：先进先出
+ class  Queue {
+     constructor(items) {
+        this.items = items || [];
+     };
+     enqueue(item) {
+         this.items.push(item);
+     };
+     dequeue(item) {
+         this.items.shift(item);
+     };
+     front() {
+        return this.items[0];
+     };
+     clear() {
+         this.items = [];
+     };
+     get size() {
+         this.items.length;
+     };
+     get isEmpty() {
+         return !this.items.length;
+     };
+     print() {
+         console.log(this.items.toString());
+     }
+ }
+ //3链表
+ //存储有序元素的集合
+// 但是不同于数组，每个元素都是一个存储元素本身的节点和指向下一个元素的引用组成；
+// 想要访问链表中间的元素，需要 从起点开始遍历找到所需元素
+class Node{
+    constructor(element) {
+        this.element = element;
+        this.next = null;
+    }
+}
+class LinkList{
+    constructor() {
+        this.head = null;
+        this.length = 0;
+    };
+    append(element) {
+        const node = new Node(element);
+        let current = null;
+        if (this.head === null) {
+            this.head = node;
+        } else {
+            current = this.head;
+            while(current.next) {
+                current = current.next;
+            }
+            current.next = node;
+        };
+        this.length++;
+    }
+}
+
+//字典：类似对象， 以key，value存储着
+class Dictionary {
+    constructor() {
+        this.items = [];
+    };
+    set(key, value) {
+        this.items[key] = value;
+    };
+    get (key) {
+        return this.items[key];
+    };
+    remove(key) {
+        delete this.items[key];
+    };
+    get keys () {
+        return Object.keys(this.items);
+    };
+    get values () {
+        return Object.values(this.items);
+    }
+};
+// 二叉树
+//节点
+function Node(data, left, right) {
+    this.left = left;
+    this.right = right;
+    this.data = data;
+    this.show = () => {
+        return this.data;
+    }
+}
+//二叉树
+function BST () {
+    this.root = null;
+    this.insert = insert;
+}
+
+function insert() {
+    var node = new Node(data, null, null);
+    if (this.root === null) {
+        this.root = node;
+    } else {
+        var current = this.root;
+        var parent;
+        while(true) {
+            parent = current;
+            if (data < current.data) {
+                current = current.left;
+                if (current === null) {
+                    parent.left = node;
+                    break;
+                }
+            } else {
+                current = current.right;
+                if (current === null) {
+                    current.right = node;
+                    break;
+                }
+            }
+        }
     }
 }
