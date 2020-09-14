@@ -20,7 +20,27 @@ export default {
  *  every() 判断每条都符合条件才返回true
  *  some()只有一项符合就返回true
  *  reduce(function (initialval, next), initval)
+  
  * 3.深拷贝
+    //所谓深度克隆，就是当对象的某个属性值为object或array的时候，要获得一份copy，而不是直接拿到引用值
+        function deepClone(origin,target) {  //origin是被克隆对象，target是我们获得copy
+            var target = target || {}; //定义target
+            for(var key in origin) {  //遍历原对象
+                if(origin.hasOwnProperty(key)) {
+                    if(Array.isArray(origin[key])) { //如果是数组
+                        target[key] = [];
+                        target[key] = deepClone(origin[key],target[key]) //递归
+                    } else if (typeof origin[key] === 'object' && origin[key] !== null) {
+                        target[key] = {};
+                        target[key] = deepClone(origin[key],target[key]) //递归
+                    } else {
+                        target[key] = origin[key];
+                    }
+                }
+            }
+            return target;
+        }
+
     *  function deepclone(obj) {
     *  var target = {}
     *  for (var key in obj) {
@@ -114,7 +134,7 @@ export default {
     * 鼠标与滚轮：click dblclick mousedown 
     *       mouseup mouseover mouseout mousemove mouseenter mouseleave(无冒泡)
     * 键盘与文本：keydown （键盘吗 eventkeycode）keypress keyup textinput
- *  9. childNodes
+ *  9.  childNodes
  *      firstChild
  *      parentNode
  *      nextSibling
@@ -138,8 +158,16 @@ export default {
  *      classList属性：add remove toggle
  *      focus()
  *      document.readyState = loading/complete 文档是否已经加载完毕
- *      
+  
  */
 }
 
+function creat() {
+    let ul = document.getElementById('ul'),
+    html;
+    for (let i = 0; i<10; i++) {
+        html+=`<li>${i}</li>`;
+    }
+    ul.innerHTML = html;
+}
 </script>

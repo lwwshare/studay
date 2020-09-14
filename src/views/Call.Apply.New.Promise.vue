@@ -289,6 +289,21 @@ async函数返回一个promise对象
 promise本身是一个对象，所以可以在代码中任意传递
 async支持率还比较低 即使有babel 编译后也还要增加1000行左右代码
 
+co执行器：
+function run(gen) {
+    const iterator = gen();
+    function autoRun(iterator) {
+        if (iterator.done) {
+            return iterator.value;
+        }
+        const anotherPromise = iterator.value;
+        anotherPromise.then(x => {
+            return autoRun(iterator.next(x));
+        })
+    }
+    return autoRun(iterator.next());
+}
+
 
 7.节流防抖
 防抖：事件被触发n秒后再执行回调 如果n秒内被触发，则重新计时
@@ -312,7 +327,7 @@ function throttle(fn, delay) {
         args;
 
     return function () {
-        let now = new Date();
+        let now = +new Date();
         context = this;
         args = arguments;
         if (now-previous>delay) {
@@ -328,7 +343,28 @@ function throttle(fn, delay) {
         let context = this,
         args = arguments;
         if (!timeout) {
-            time = setTimeout(function() {
+            timeout = setTimeout(function() {
+                timeout = null;
+                fn.apply(context, args);
+            }, delay);
+        }
+    }
+}
+
+二者结合:
+function debounce_throttle(fn, delay) {
+    let timeout,
+    context,
+    previous = 0;
+    return function () {
+        context = this;
+        args = arguments;
+        let now = +new Date();
+        if (now-previous > delay) {//时间到了执行
+            fn.apply(context, args);
+            previous = now;
+        } else {//时间不到等待
+             timeout = setTimeout(function() {
                 timeout = null;
                 fn.apply(context, args);
             }, delay);
