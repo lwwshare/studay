@@ -413,7 +413,7 @@ export class Year {
 
     /**
      * 下一月
-     * @return {Month} 返回该实例
+     * @return {Year} 返回该实例
      */
     next() {
         let { year, month } = this.curYear;

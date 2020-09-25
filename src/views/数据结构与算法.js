@@ -131,3 +131,26 @@ var maxDepth = function(root) {
     if (!root) return 0
     return 1 + Math.max(maxDepth(root.left), maxDepth(root.right))
 };
+
+//二分查找
+//递归
+let binaryFind2 = (arr, key, start, end) => {
+        if (start > end) return -1;
+        let mid = Math.ceil((start + end) / 2);
+        if (arr[mid] == key) return mid;
+        arr[mid] > key ? binaryFind2(arr, key, start, --mid) : binaryFind2(arr, key, ++mid, end);
+    }
+    //非递归
+let binaryFind2 = (arr, key) => {
+    let start = 0,
+        end = arr.length - 1,
+        mid = 0;
+    while (start <= end) {
+        mid = Math.ceil((start + end) / 2);
+        if (arr[mid] === key) {
+            return mid;
+        };
+        arr[mid] > key ? end = mid - 1 : start = mid + 1;
+    };
+    return;
+}
