@@ -191,5 +191,15 @@ function listToTree(oldArr){
     console.log(oldArr)
     return oldArr;
 }
-
+//reverse
+  function reverse(myArr){
+        var left=0;//存储左边第一个位置
+        var right=arr.length-1;//存储右边最后一个位置
+        while(left<right){//停止进行的条件
+        var temp=myArr[left];//利用一个中间变量来交换位置
+        myArr[left]=myArr[right];
+        myArr[right]=temp;
+        left++;
+        right--;
+}
 </script>
