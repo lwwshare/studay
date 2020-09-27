@@ -153,4 +153,53 @@ let binaryFind2 = (arr, key) => {
         arr[mid] > key ? end = mid - 1 : start = mid + 1;
     };
     return;
+};
+
+//之字形遍历二叉树
+public void loop(TreeNode root) {
+    if (root == null) return;
+
+    ArrayList < TreeNode > res = new ArrayList < > ();
+
+    Stack < TreeNode > stack1 = new Stack < > ();
+    Stack < TreeNode > stack2 = new Stack < > ();
+    boolean left2Right = true;
+
+    stack1.push(root);
+
+    while (!stack1.isEmpty() || !stack2.isEmpty()) {
+        // 从左向右
+        if (left2Right) {
+
+            while (!stack1.isEmpty()) {
+                TreeNode node = stack1.pop();
+                res.add(node);
+                if (node.left != null) {
+                    stack2.push(node.left);
+                }
+                if (node.right != null) {
+                    stack2.push(node.right);
+                }
+            }
+            // 从右向左
+        } else {
+
+            while (!stack2.isEmpty()) {
+                TreeNode node = stack2.pop();
+                res.add(node);
+                if (node.right != null) {
+                    stack1.push(node.right);
+                }
+                if (node.left != null) {
+                    stack1.push(node.left);
+                }
+            }
+
+        }
+        left2Right = !left2Right;
+    }
+
+    for (TreeNode node: res) {
+        System.out.println("" + node.value);
+    }
 }
