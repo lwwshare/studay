@@ -328,7 +328,7 @@ function throttle(fn, delay) {
         args;
 
     return function () {
-        let now = new Date();
+        let now = +new Date();
         context = this;
         args = arguments;
         if (now-previous>delay) {
@@ -345,6 +345,30 @@ function throttle(fn, delay) {
         args = arguments;
         if (!timeout) {
             timeout = setTimeout(function() {
+<<<<<<< HEAD
+=======
+                timeout = null;
+                fn.apply(context, args);
+            }, delay);
+        }
+    }
+}
+
+二者结合:
+function debounce_throttle(fn, delay) {
+    let timeout,
+    context,
+    previous = 0;
+    return function () {
+        context = this;
+        args = arguments;
+        let now = +new Date();
+        if (now-previous > delay) {//时间到了执行
+            fn.apply(context, args);
+            previous = now;
+        } else {//时间不到等待
+             timeout = setTimeout(function() {
+>>>>>>> aa2f8d670a7835ee4901ca8191200543104aba8b
                 timeout = null;
                 fn.apply(context, args);
             }, delay);

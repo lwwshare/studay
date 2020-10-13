@@ -134,7 +134,7 @@ export default {
     * 鼠标与滚轮：click dblclick mousedown 
     *       mouseup mouseover mouseout mousemove mouseenter mouseleave(无冒泡)
     * 键盘与文本：keydown （键盘吗 eventkeycode）keypress keyup textinput
- *  9. childNodes
+ *  9.  childNodes
  *      firstChild
  *      parentNode
  *      nextSibling
@@ -158,8 +158,48 @@ export default {
  *      classList属性：add remove toggle
  *      focus()
  *      document.readyState = loading/complete 文档是否已经加载完毕
- *      
+  
  */
 }
 
+function creat() {
+    let ul = document.getElementById('ul'),
+    html;
+    for (let i = 0; i<10; i++) {
+        html+=`<li>${i}</li>`;
+    }
+    ul.innerHTML = html;
+}
+
+//list to tree
+function listToTree(oldArr){
+    oldArr.forEach(element => {
+        let parentId = element.parentId;
+        if(parentId !== 0){
+            oldArr.forEach(ele => {
+                if(ele.id == parentId){ //当内层循环的ID== 外层循环的parendId时，（说明有children），需要往该内层id里建个children并push对应的数组；
+                    if(!ele.children){
+                        ele.children = [];
+                    }
+                    ele.children.push(element);
+                }
+            });
+        }
+    });
+    console.log(oldArr)  //此时的数组是在原基础上补充了children;
+    oldArr = oldArr.filter(ele => ele.parentId === 0); //这一步是过滤，按树展开，将多余的数组剔除；
+    console.log(oldArr)
+    return oldArr;
+}
+//reverse
+  function reverse(myArr){
+        var left=0;//存储左边第一个位置
+        var right=arr.length-1;//存储右边最后一个位置
+        while(left<right){//停止进行的条件
+        var temp=myArr[left];//利用一个中间变量来交换位置
+        myArr[left]=myArr[right];
+        myArr[right]=temp;
+        left++;
+        right--;
+}
 </script>
