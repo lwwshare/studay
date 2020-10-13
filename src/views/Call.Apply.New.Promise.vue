@@ -49,6 +49,7 @@ function myBind(context) {
             return new _this(...args, ...arguments);
         }
         return _this.apply(context, args.concat(arguments));
+        }
     }
 5.promise
 (   
@@ -343,7 +344,7 @@ function throttle(fn, delay) {
         let context = this,
         args = arguments;
         if (!timeout) {
-            time = setTimeout(function() {
+            timeout = setTimeout(function() {
                 timeout = null;
                 fn.apply(context, args);
             }, delay);

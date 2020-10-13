@@ -142,7 +142,7 @@
                     exclude: /node_modules/ //排除掉node_modules,优化打包速度
                 }
             ]
-        },
+        }, 
 
         plugins: [
             new CleanWebpackPlugin('dist'),
