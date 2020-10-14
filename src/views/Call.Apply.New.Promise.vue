@@ -345,8 +345,6 @@ function throttle(fn, delay) {
         args = arguments;
         if (!timeout) {
             timeout = setTimeout(function() {
-<<<<<<< HEAD
-=======
                 timeout = null;
                 fn.apply(context, args);
             }, delay);
@@ -368,7 +366,6 @@ function debounce_throttle(fn, delay) {
             previous = now;
         } else {//时间不到等待
              timeout = setTimeout(function() {
->>>>>>> aa2f8d670a7835ee4901ca8191200543104aba8b
                 timeout = null;
                 fn.apply(context, args);
             }, delay);
